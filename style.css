@@ -473,3 +473,22 @@ body::before {
         text-shadow: 0 0 20px rgba(255,215,0,1);
     }
 }
+
+/* 🔥 FEATURE LIST TEXT UPGRADE */
+.benefit-list li {
+    font-size: 17px;
+    font-weight: 600;
+
+    color: rgba(255,255,255,0.95);
+
+    text-shadow: 
+        0 0 6px rgba(255,255,255,0.2),
+        0 0 12px rgba(0,198,255,0.2);
+
+    margin: 15px 0;
+}
+
+.benefit-list li span,
+.benefit-list li .icon {
+    font-size: 18px;
+}
