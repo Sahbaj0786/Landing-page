@@ -1,0 +1,475 @@
+/* --- Base Reset --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-blue: #007bff;
+    --accent-green: #00ff88;
+    --glass-bg: rgba(255, 255, 255, 0.04);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --dark-bg: #080a0f;
+}
+
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    color: white;
+    min-height: 100vh;
+    overflow-x: hidden;
+    background: #000; /* fallback */
+}
+
+/* 🔥 BACKGROUND LAYER */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: url('landingbg.jpg') no-repeat center/cover;
+    z-index: -2;
+
+    animation: bgMove 25s ease-in-out infinite alternate;
+}
+
+/* 🔥 ONLY BACKGROUND MOVE */
+@keyframes bgMove {
+    0% {
+        transform: scale(1) translate(0, 0);
+    }
+    100% {
+        transform: scale(1.08) translate(-2%, -2%);
+    }
+}
+
+/* --- 2. Header (Mobile & Desktop Match) --- */
+.header {
+    padding: 1.2rem;
+    width: 100%;
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-box {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-circle img {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    border: 1.5px solid var(--glass-border);
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+}
+
+.logo-text .label {
+    font-size: 10px;
+    color: rgba(255,255,255,0.7);
+    letter-spacing: 1px;
+}
+
+.logo-text .brand {
+    font-size: 16px;
+    font-weight: 600;
+    white-space: nowrap;   /* 🔥 main fix */
+}
+
+/* Top Right Button Style (Screenshot 3) */
+.btn-tg-top {
+    background: #24272c;
+    padding: 8px 16px;
+    border-radius: 50px;
+    text-decoration: none;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+    border: 1px solid rgba(255,255,255,0.1);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: 0.3s;
+}
+
+.btn-tg-top i {
+    background: #fff;
+    color: #000;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+}
+
+/* --- 3. Main Grid Layout --- */
+.main-content {
+    padding: 2rem 1rem 6rem;
+    display: flex;
+    justify-content: center;
+}
+
+.container-grid {
+    display: grid;
+    grid-template-columns: 380px 1fr; /* Desktop par Fixed width for Left card */
+    gap: 40px;
+    max-width: 1100px;
+    width: 100%;
+    align-items: start;
+}
+
+/* --- 4. Card Styling (Glassmorphism) --- */
+.card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border: 1px solid var(--glass-border);
+    border-radius: 28px;
+    padding: 40px 30px;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+/* Profile Card Specifics */
+.profile-card { text-align: center; }
+
+.verified-badge {
+    position: absolute;
+    top: 25px; right: 25px;
+    background: rgba(255,255,255,0.08);
+    padding: 5px 14px;
+    border-radius: 20px;
+    font-size: 11px;
+}
+
+.profile-ring {
+    width: 180px; height: 180px;
+    margin: 0 auto 20px;
+    padding: 6px;
+    background: linear-gradient(135deg, #007bff, #bc13fe);
+    border-radius: 50%;
+    box-shadow: 0 0 25px rgba(0, 123, 255, 0.4);
+}
+
+.profile-ring img {
+    width: 100%; height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid #0d1117;
+}
+
+.profile-name { font-size: 1.6rem; font-weight: 700; margin-bottom: 10px; }
+.profile-tags {
+    font-size: 13px;
+    white-space: nowrap;   /* 🔥 ye main fix hai */
+}
+
+/* Mini Buttons Row */
+.mini-actions {
+    display: flex; gap: 12px; margin-top: 30px;
+}
+.action-item {
+    flex: 1;
+    background: rgba(255,255,255,0.06);
+    padding: 14px 5px;
+    border-radius: 15px;
+    text-decoration: none;
+    color: #fff;
+    font-size: 13px;
+    text-align: center;
+    transition: 0.3s;
+}
+
+/* Right Section Section */
+.right-column { display: flex; flex-direction: column; align-items: center; }
+
+.promo-badge {
+    background: #000;
+    border: 1px solid #bc13fe;
+    color: #ff4dff;
+    padding: 10px 28px;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 14px;
+    margin-bottom: -22px;
+    z-index: 5;
+    box-shadow: 0 4px 15px rgba(188, 19, 254, 0.3);
+}
+
+.info-card .welcome-title { 
+    font-size: 32px; 
+    line-height: 1.2; 
+    margin-bottom: 25px; 
+    text-align: center; 
+    font-weight: 700;
+}
+.highlight { color: var(--accent-green); }
+
+/* Main Glow Button */
+.btn-primary-glow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: linear-gradient(90deg, #0056FF, #00a2ff);
+    color: #fff;
+    padding: 18px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 700;
+    box-shadow: 0 0 20px rgba(0, 86, 255, 0.4);
+    margin: 1.5rem 0;
+    transition: 0.3s;
+}
+
+.feature-meta {
+    color: rgba(255,255,255,0.75);
+    text-shadow: 0 0 6px rgba(255,255,255,0.12);
+
+    font-size: 13px;
+    text-align: center;
+    white-space: nowrap;   /* 🔥 line break fix */
+}
+
+.benefit-list { list-style: none; margin: 25px 0; width: 100%; }
+.benefit-list li { 
+    margin: 15px 0; 
+    font-size: 16px; 
+    display: flex; 
+    align-items: center; 
+    gap: 12px; 
+    color: #ddd;
+}
+
+/* --- 5. Footer Bar --- */
+.bottom-bar {
+    position: fixed;
+    bottom: 0; width: 100%;
+    background: rgba(8, 10, 15, 0.9);
+    backdrop-filter: blur(15px);
+    display: flex;
+    justify-content: center;
+    gap: 35px;
+    padding: 18px;
+    border-top: 1px solid var(--glass-border);
+    z-index: 100;
+}
+.footer-item { font-size: 11px; color: #999; display: flex; align-items: center; gap: 8px; font-weight: 500; }
+.footer-item i { color: var(--primary-blue); font-size: 14px; }
+
+/* --- 6. MOBILE VIEW FIX (100% Guaranteed) --- */
+@media (max-width: 900px) {
+    /* Grid ko single column mein force karein */
+    .container-grid {
+        grid-template-columns: 1fr !important; 
+        gap: 30px;
+        padding: 0 10px;
+    }
+
+    .header-container {
+        padding: 0 5px;
+    }
+
+    /* Cards width 100% */
+    .card {
+    padding: 35px 20px;
+    width: 100%;
+    position: relative; /* 🔥 ye add kar */
+}
+
+    .card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 28px;
+
+    background: radial-gradient(
+        circle at top,
+        rgba(255,255,255,0.12),
+        transparent 70%
+    );
+
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+    .profile-ring {
+        width: 150px; height: 150px;
+    }
+
+    .info-card .welcome-title {
+        font-size: 24px;
+    }
+
+    /* Footer wrap for small screens */
+    .bottom-bar {
+        gap: 15px;
+        flex-wrap: wrap;
+        padding: 12px;
+    }
+}
+
+.btn-primary-glow {
+    display: block;
+    background: linear-gradient(90deg, #1a5fff, #00c6ff);
+    color: white;
+    text-decoration: none;
+    padding: 18px;
+    border-radius: 50px;
+    font-weight: 600;
+    margin: 20px 0;
+    box-shadow: 0 0 25px rgba(0,123,255,0.4);
+    transition: 0.3s;
+    text-align: center;
+}
+
+.btn-primary-glow:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 0 40px rgba(0,123,255,0.6);
+}
+
+/* 🔥 Footer Wrapper (center align) */
+.footer-wrapper {
+    display: flex;
+    justify-content: center;
+    margin: 25px 0 40px;
+    padding: 0 12px;   /* 🔥 ye main fix hai */
+}
+
+/* 🔥 Premium Footer */
+.footer-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    gap: 20px;
+    padding: 12px 20px;
+
+    background: rgba(255,255,255,0.06);
+    backdrop-filter: blur(20px);
+
+    border-radius: 14px;
+    border: 1px solid rgba(255,255,255,0.12);
+
+    width: 100%;          /* 🔥 main fix */
+    max-width: 700px;     /* desktop control */
+}
+
+/* 🔥 Footer Items */
+.footer-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: 0.3s;
+}
+
+/* 🔥 Icons Blue Glow */
+.footer-item i {
+    color: #00aaff;
+    text-shadow: 0 0 8px rgba(0,170,255,0.8);
+}
+
+/* 🔥 Hover Effect */
+.footer-item:hover {
+    color: white;
+    transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+
+    .card {
+        width: 92%;           /* 🔥 thoda gap left-right */
+        margin: 10px auto;    /* 🔥 center */
+        border-radius: 20px;
+    }
+
+    .container-grid {
+        padding: 2;
+    }
+
+    .main-content {
+        padding: 0;
+    }
+
+    .footer-bar {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+        padding: 15px;
+    }
+}
+
+/* 🔥 MOBILE CENTER FIX */
+@media (max-width: 768px) {
+    .container-grid {
+        display: flex;
+        flex-direction: column;
+        align-items: center;   /* 🔥 center fix */
+    }
+
+    .card {
+        width: 100%;
+        margin: 10px auto;     /* 🔥 center align */
+    }
+
+    .right-column {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+/* 🔥 DESKTOP (YAHAN ADD KARNA HAI) */
+@media (min-width: 768px) {
+    .footer-item {
+        font-size: 15px;
+    }
+
+    .footer-item i {
+        font-size: 16px;
+    }
+}
+
+.footer-item {
+    color: #ffffff;   /* text white */
+    font-weight: 500;
+    letter-spacing: 0.3px;
+}
+
+.footer-item i {
+    color: #00c6ff;   /* 🔥 blue icon */
+    text-shadow: 0 0 8px rgba(0,198,255,0.8);
+}
+
+.promo-badge i {
+    color: gold;
+    margin-left: 6px;
+
+    animation: kingGlow 1.5s infinite alternate;
+}
+
+@keyframes kingGlow {
+    0% {
+        transform: scale(1);
+        text-shadow: 0 0 5px rgba(255,215,0,0.5);
+    }
+    100% {
+        transform: scale(1.2);
+        text-shadow: 0 0 20px rgba(255,215,0,1);
+    }
+}
